@@ -18,6 +18,24 @@ export async function generateMetadata() {
   });
 }
 
+const titles = [
+  "Exploring ideas through code and circuits",
+  "Learning to build with code and hardware",
+  "Connecting logic, creativity, and electronics",
+  "Building knowledge one project at a time",
+  "Designing hardware with purpose and curiosity",
+  "From code to circuits, learning by doing",
+  "Wiring ideas into code and design",
+  "Crafting projects from code and components",
+  "Learning to connect software and hardware",
+  "Student projects at the edge of design",
+];
+
+function getRandomTitle() {
+  const index = Math.floor(Math.random() * titles.length);
+  return titles[index];
+}
+
 export default function Home() {
   return (
     <Column maxWidth="m" gap="xl" horizontal="center">
@@ -46,7 +64,7 @@ export default function Home() {
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              {getRandomTitle()}
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">

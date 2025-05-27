@@ -8,9 +8,9 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Student at CRHS",
-  avatar: "/images/Profile.png",
+  avatar: "/images/avatar.jpg",
   email: "wermax2008@outlook.com",
-  location: "America/Chicago", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  //location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Polish", "German"], // optional: Leave the array empty if you don't want to display languages
 };
 
@@ -19,7 +19,8 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about technology and share my thoughts about it
+      I occasionally write about design, technology, and share thoughts on the intersection of
+      creativity and engineering.
     </>
   ),
 };
@@ -49,6 +50,17 @@ const social = [
   },
 ];
 
+const titles = [
+  "Exploring ideas through code and circuits",
+  "Learning to build with code and hardware",
+  "Connecting logic, creativity, and electronics",
+  "Building knowledge one project at a time",
+  "Designing hardware with purpose and curiosity",
+  "From code to circuits, learning by doing",
+];
+const randomTitle = useMemo(() => {
+  return titles[Math.floor(Math.random() * titles.length)];
+}, []);
 
 const home = {
   path: "/",
@@ -56,17 +68,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  //headline: , The Headline is generated in src/app/page.tsx
+  headline: <>randomTitle</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">In Progress</strong></>,
-    //href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
+    href: "/work/building-once-ui-a-customizable-design-system",
   },
   subline: (
     <>
-      I'm {person.name}, a {person.role} at {person.company} where 
-      <br />I am always inspired by technology.
-      <br/><br/>After hours, I build like to build projects.
+      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
+      <br /> user experiences. After hours, I build my own projects.
     </>
   ),
 };
@@ -74,7 +85,7 @@ const home = {
 const about = {
   path: "/about",
   label: "About",
-  title: `Learn more – About ${person.name}`,
+  title: `About – ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -84,7 +95,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: false,
+    display: true,
     link: "https://cal.com",
   },
   intro: {
@@ -268,3 +279,5 @@ const gallery = {
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };
+qqqqq:q
+qqq
