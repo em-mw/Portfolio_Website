@@ -1,5 +1,5 @@
 import { Logo } from "@/once-ui/components";
-import { useMemo } from "react";
+//import { useMemo } from "react";
 
 const person = {
   firstName: "Maximilian",
@@ -15,7 +15,7 @@ const person = {
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -28,9 +28,14 @@ const social = [
   // Links are automatically displayed.
   // Import new icons in /once-ui/icons.ts
   {
-    name: "GitHub",
+    name: "em-mw",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/em-mw",
+  },
+  {
+    name: "ErMax.Inc",
+    icon: "github",
+    link: "https://github.com/ErMax-Inc",
   },
   {
     name: "LinkedIn",
@@ -92,14 +97,14 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Hey, I am Max. I am mainly interested in programming and hardware projects. From an early age I was always inspired
+        by how things work and to this day I feel this is key aspect of who I am today.
       </>
     ),
   },
+
   work: {
-    display: true, // set to false to hide this section
+    display: false, // set to false to hide this section
     title: "Work Experience",
     experiences: [
       {
@@ -142,29 +147,45 @@ const about = {
         ],
         images: [],
       },
+      {
+        company: "The Sus",
+        timeframe:"8888 - 88898",
+        role: "the",
+        achievements: [
+          <>
+            Developed a design system that unified the brand across multiple platforms, improving
+            design consistency by 40%.
+          </>,
+          <>
+            Led a cross-functional team to launch a new product line, contributing to a 15% increase
+            in overall company revenue.
+          </>,
+        ],
+        images: [],
+      }
     ],
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Cinco Ranch High School",
+        description: <>2022 - 2026</>,
       },
-      {
+      /*{
         name: "Build the Future",
         description: <>Studied online marketing and personal branding.</>,
-      },
+      },*/
     ],
   },
   technical: {
     display: true, // set to false to hide this section
-    title: "Technical skills",
+    title: "Technical skills and Programming Languages",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
+        title: "Python",
+        description: <>One of my first languages and the language I am most comfortable with.</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -180,6 +201,16 @@ const about = {
             height: 9,
           },
         ],
+        imgDesc: [
+          {
+            imgText: "Learn More",
+            imgLink: "https://github.com/ErMax-Inc/pic2ascii",
+          },
+          {
+            imgText: "yes0",
+            imgLink: "https://github.com/ErMax-Inc/"
+          }
+        ],
       },
       {
         title: "Next.js",
@@ -192,6 +223,16 @@ const about = {
             width: 16,
             height: 9,
           },
+        ],
+        imgDesc: [
+          {
+            imgText: "Learn More",
+            imgLink: "https://github.com/ErMax-Inc/pic2ascii",
+          },
+          {
+            imgText: "yes0",
+            imgLink: "https://github.com/ErMax-Inc/"
+          }
         ],
       },
     ],
@@ -209,7 +250,7 @@ const blog = {
 
 const work = {
   path: "/work",
-  label: "Work",
+  label: "Projects",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts

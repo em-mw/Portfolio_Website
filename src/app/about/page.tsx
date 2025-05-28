@@ -309,6 +309,11 @@ export default function About() {
                         ))}
                       </Flex>
                     )}
+                  <Flex paddingTop='12'>
+                    {skill.imgDesc.map((desc, index2) => (
+                        <a href={desc.imgLink}>{desc.imgText}&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    ))}
+                  </Flex>
                   </Column>
                 ))}
               </Column>

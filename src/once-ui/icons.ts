@@ -38,6 +38,9 @@ import {
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX } from "react-icons/fa6";
 
+import {FiGithub} from "react-icons/fi";
+import { GiTinker } from "react-icons/gi";
+
 export const iconLibrary: Record<string, IconType> = {
   chevronUp: HiChevronUp,
   chevronDown: HiChevronDown,
@@ -65,7 +68,7 @@ export const iconLibrary: Record<string, IconType> = {
   discord: FaDiscord,
   eye: HiOutlineEye,
   eyeOff: HiOutlineEyeSlash,
-  github: FaGithub,
+  github: FiGithub,
   linkedin: FaLinkedin,
   x: FaX,
   clipboard: HiClipboard,
@@ -73,6 +76,7 @@ export const iconLibrary: Record<string, IconType> = {
   moon: HiMoon,
   sun: HiSun,
   document: HiOutlineDocument,
+  tools:GiTinker,
 };
 
 export type IconLibrary = typeof iconLibrary;
