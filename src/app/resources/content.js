@@ -89,8 +89,8 @@ const about = {
     display: true,
   },
   calendar: {
-    display: false,
-    link: "https://cal.com",
+    display: true,
+    link: `mailto:${person.email}`,
   },
   intro: {
     display: true,
@@ -207,14 +207,14 @@ const about = {
             imgLink: "https://github.com/ErMax-Inc/pic2ascii",
           },
           {
-            imgText: "yes0",
+            imgText: "Main Project",
             imgLink: "https://github.com/ErMax-Inc/"
           }
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
+        title: "Java",
+        description: <>A language that I am still learning but somewhat proficent in</>,
         // optional: leave the array empty if you don't want to display images
         images: [
           {
@@ -230,7 +230,30 @@ const about = {
             imgLink: "https://github.com/ErMax-Inc/pic2ascii",
           },
           {
-            imgText: "yes0",
+            imgText: "Main Project",
+            imgLink: "https://github.com/ErMax-Inc/"
+          }
+        ],
+      },
+      {
+        title: "Hardware Engineering",
+        description: <>One of my latest hobbies that I hope to expand apon</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+        ],
+        imgDesc: [
+          {
+            imgText: "Learn More",
+            imgLink: "https://github.com/ErMax-Inc/pic2ascii",
+          },
+          {
+            imgText: "Science Fair Project",
             imgLink: "https://github.com/ErMax-Inc/"
           }
         ],

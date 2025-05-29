@@ -114,6 +114,7 @@ export default function About() {
             marginBottom="32"
           >
             {about.calendar.display && (
+              <a href={about.calendar.link}>
               <Flex
                 fitWidth
                 border="brand-alpha-medium"
@@ -128,8 +129,8 @@ export default function About() {
                 marginBottom="m"
                 vertical="center"
               >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
+                <Icon paddingLeft="12" name="email" onBackground="brand-weak" />
+                <Flex paddingX="8">Send an Email</Flex>
                 <IconButton
                   href={about.calendar.link}
                   data-border="rounded"
@@ -137,6 +138,7 @@ export default function About() {
                   icon="chevronRight"
                 />
               </Flex>
+              </a>
             )}
             <Heading align="center" variant="display-strong-xl">
               {person.name}
