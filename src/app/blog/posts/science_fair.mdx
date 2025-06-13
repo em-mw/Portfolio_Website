@@ -1,0 +1,138 @@
+---
+title: "Science Fair of 2024"
+summary: "Personalize the portfolio template with your own content."
+publishedAt: "2025-04-18"
+tag: "Magic Portfolio"
+---
+
+## Backstory
+
+I first heared of the science fair, or more formaly known as ICEF, in later half of my sophmore year of high school.
+Unfortunatly, the due date to sign up for sefh, my regional division of ISEF, was too late. Nevertheless, I still thought it would be pretty cool to make something for the upcomming year that would also challenge me.
+
+Replace the `public/images/avatar.jpg` file with your own avatar image. It is used on the `/about` page as well as on the dynamically generated `open-graph` images.
+
+<SmartImage
+  src="/images/projects/project-01/cover-01.jpg"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="16/9"
+  radius="l"
+/>
+
+## The AD-1 FPV Idea
+
+My friend at the time became obsessed with NASA's <a href="https://www.nasa.gov/reference/ad-1/">Ames-Dryden AD-1</a> project and really wanted to work with me on it. More colloquially known as the oblique wing plane, the project
+was a very interesting first project for the science fair. While it was not an original idea, it could have many applications in the real world as a theoretically more efficient substitute for drones
+or even a more efficient substitute for conventional military FPVs, especially with the war in Ukraine being a hot topic.
+
+Replace the `src/app/favicon.ico` file with your own favicon.
+
+
+Replace the content in the `resources/content.js` file with your own content. You can use custom components in most cases, since the props are usually declared as `ReactNode` instead of `string`, but it's important that you need to import them in the file.
+
+## The Urgent Change of Plans
+
+## Air Purifier on a Budget (Money and Time)
+
+## The Final Date
+
+## What I learned
+<CodeBlock
+    marginBottom="16"
+    highlight="1-2"
+    codeInstances={[
+  {
+    code:
+`import { InlineCode } from "@/once-ui/components";
+import Link from "next/link";
+
+const person = {
+  ...
+};`,
+    language: "tsx",
+    label: "src/app/resources/content.js"
+  }
+]} />
+
+The imports above would let us use `InlineCode` and `Link` components in the content file.
+
+### Personal details
+
+Your personal details are used across the whole app to render personalized headings, labels and images. Languages are displayed on the `/about` page, and location and time in the header.
+
+<CodeBlock
+    marginBottom="16"
+    highlight="2-3,7-10"
+    codeInstances={[
+  {
+    code:
+`const person = {
+    firstName: "Selene",
+    lastName: "Yu",
+    get name() {
+      return "...";
+    },
+    role: "Design Engineer",
+    avatar: "/images/avatar.jpg",
+    location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+    languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+};`,
+    language: "tsx",
+    label: "src/app/resources/content.js"
+  }
+]} />
+
+### Social links
+
+Social links are rendered on the `/about` page and in the footer based on the array configured in the `social` object. You can set custom icons to each, but don't forget to import them in `src/once-ui/icons.ts`. Read the Once UI documentation](https://once-ui.com/docs/icons) for more information.
+
+<CodeBlock
+    marginBottom="16"
+    codeInstances={[
+  {
+    code:
+`const social = [
+    {
+      name: "GitHub",
+      icon: "github",
+      link: "https://github.com/once-ui-system/nextjs-starter",
+    },
+    {
+      name: "Email",
+      icon: "email",
+      link: "mailto:lorant@once-ui.com",
+    },
+];`,
+    language: "tsx",
+    label: "src/app/resources/content.js"
+  }
+]} />
+
+### Pages
+
+Each page have it's own object that manages the personalized content, such as headings, subheadings, images and dynamic data.
+
+<CodeBlock
+    marginBottom="16"
+    codeInstances={[
+  {
+    code:
+`const home = {
+    label: "Home",
+    title: "Selene Yu's Portfolio",
+    description: "Portfolio website showcasing my work as a Design Engineer",
+    headline: <>Design engineer and builder</>,
+    subline: (
+      <>
+        I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
+        <br /> user experiences. After hours, I build my own projects.
+      </>
+    ),
+};`,
+    language: "tsx",
+    label: "src/app/resources/content.js"
+  }
+]} />
+
+The `label` property is used in the header navigation. The `title` property is used for the page title and the `description` property is used for the page description. They are also used in meta- and open graph tags.

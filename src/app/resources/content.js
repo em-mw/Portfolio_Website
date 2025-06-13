@@ -97,7 +97,7 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Hey, I am Max. I am mainly interested in programming and hardware projects. From an early age I was always inspired
+        Hey, I am Max. I am mainly interested in programming and hardware projects. From an early age I have been always inspired
         by how things work and to this day I feel this is key aspect of who I am today.
       </>
     ),
