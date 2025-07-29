@@ -9,6 +9,8 @@ import {
   SmartLink,
   Text,
   InlineCode,
+  CompareImage,
+  TiltFx,
 } from "@/once-ui/components";
 import { CodeBlock } from "@/once-ui/modules/code/CodeBlock";
 import { TextProps } from "@/once-ui/interfaces";
@@ -157,6 +159,7 @@ const components = {
   Text,
   CodeBlock,
   InlineCode,
+  CompareImage,
   Accordion: dynamic(() => import("@/once-ui/components").then(mod => mod.Accordion)),
   AccordionGroup: dynamic(() => import("@/once-ui/components").then(mod => mod.AccordionGroup)),
   Table: dynamic(() => import("@/once-ui/components").then(mod => mod.Table)),

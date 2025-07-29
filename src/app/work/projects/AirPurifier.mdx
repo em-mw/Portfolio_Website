@@ -1,0 +1,230 @@
+---
+title: "Making an Air Purifier on a Budget"
+publishedAt: "2025-04-01"
+summary: "Exploring the different ways that air purification can be implemented for the developing world"
+images:
+  - "/images/PlaceHolder.png"
+  - "/images/PlaceHolder.png"
+team:
+  - name: "Maximilian Werner"
+    role: "Lead Developer"
+    avatar: "/images/Profile.png"
+    linkedIn: "soon"
+link: "github"
+---
+
+## The Goal
+
+Create a air purifier that could be easily implemented in lower income areas, especially ones with bad air quality.
+
+# Technical Overview
+
+## Key Components
+
+- **Raspberry Pi Pico**: [RP2040](https://en.wikipedia.org/wiki/RP2040) micro controller that supports various `Python` flavors as well as `C`. This is what is responsible for making the purifier automated.
+- **SPG30 TOVC Sensor**: [I²C](https://en.wikipedia.org/wiki/I%C2%B2C) sensor that allows easy communication to the Raspberry Pi Pico, giving a fairly accurate reading of the [TOVC]() in its surrounding area.
+- **1602 16x2 LCD Display**: [I²C](https://en.wikipedia.org/wiki/I%C2%B2C) display that provides the basic functionality for reading output data from the `SPG30 TOVC` sensor.
+- **HEPA Filter**: Filter that filters through fine particulate matter.
+- **Activated Charcoal Filter**: Porous filter that absorbs many chemicals, ordors, and organic compounds
+
+## Program Overview
+
+full code available on my [GitHub](https://github.com/em-mw/) (soon)
+
+<CodeBlock
+    marginBottom="16"
+    lineNumbers
+    codeInstances={[
+  {
+    code:
+`import time, board, busio, digitalio
+#import adafruit_character_lcd.character_lcd_i2c as character_lcd
+import lcd.lcd
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+import adafruit_sgp30
+
+# --- I2C Configuration ---
+
+i2c = busio.I2C(scl=board.GP1, sda=board.GP0)
+
+i2c1 = busio.I2C(scl=board.GP15, sda=board.GP14)
+
+
+sgp30 = adafruit_sgp30.Adafruit_SGP30(i2c1)
+
+
+relay = digitalio.DigitalInOut(board.GP16)#20 on right
+relay.direction = digitalio.Direction.OUTPUT
+relay.value=False
+relay_state=False
+#input(sgp30.serial)
+
+# --- LCD Configuration ---
+lcd_columns = 16
+lcd_rows = 2
+lcd_address = 0x27
+
+
+#Custom characters here: http://educ8s.tv/tools/lcd-character-creator/
+
+#sda, scl = board.GP0, board.GP1
+#i2c = busio.I2C(scl, sda)
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+#If address 0x27 does not work try 0x3F
+
+lcd.set_cursor_pos(0,0)
+lcd.print("Heating SGP30")
+lcd.set_cursor_pos(1,0)
+lcd.print("Please Wait")
+
+sgp30.iaq_init()
+
+for i in range(0,15):
+    lcd.set_cursor_pos(1,12)
+    lcd.print(f"{15-i}s")
+    #lcd.set_backlight(0)
+
+    time.sleep(1)
+    lcd.set_cursor_pos(1,12)
+    lcd.print("    ")
+    #lcd.clear()
+lcd.clear()
+
+lcd.set_cursor_pos(0,0)
+lcd.print("TOVC: ")
+lcd.set_cursor_pos(1,0)
+lcd.print("ppb: ")
+
+while True:
+    lcd.set_cursor_pos(0,6)
+    if sgp30.iaq_measure()[1]<30:
+        lcd.print("good  :)")
+        if relay_state:
+            relay.value=False
+            relay_state=False
+
+    elif sgp30.iaq_measure()[1]<100:
+        lcd.print("ok  :|")
+        if relay_state:
+            relay.value=False
+            relay_state=False
+    else:
+        if sgp30.iaq_measure()[1]<=150:
+            lcd.print("poor  :(")
+        elif sgp30.iaq_measure()[1]<170:
+            lcd.print("bad  ;(")
+        else:
+            lcd.print("TOXIC  X(")
+            for _ in range(0,2):
+                time.sleep(.2)
+                lcd.set_backlight(0)
+                time.sleep(.2)
+                lcd.set_backlight(1)
+        if not relay_state:
+            relay.value=True
+            relay_state=True
+    lcd.set_cursor_pos(1,5)
+    lcd.print(f"{sgp30.iaq_measure()[1]}  F:{relay_state}")
+    
+    time.sleep(.9)
+    lcd.set_cursor_pos(0,6)
+    lcd.print("          ")
+    lcd.set_cursor_pos(1,5)
+    lcd.print("           ")
+    #lcd.clear()
+`,
+    language: "ts",
+    label: "/main.py"
+  }
+]} />
+
+# Story Behind The Project
+
+## Backstory
+
+I first heared of the science fair, or more formaly known as [ICEF](), in later half of my sophmore year of high school.
+Unfortunatly, the due date to sign up for [sefh](), my regional division of ISEF, was too late. Nevertheless, I still thought it would be pretty cool to make something for the upcomming year that would also challenge me.
+
+
+
+
+## The AD-1 FPV Idea
+
+<SmartImage
+  src="/images/PlaceHolder.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="16/9"
+  radius="l"
+/>
+
+<p align="center">an image of the <a href="https://www.nasa.gov/reference/ad-1/">Ames-Dryden AD-1</a> project </p>
+
+---
+
+---
+
+One of my classmates became obsessed with NASA's <a href="https://www.nasa.gov/reference/ad-1/">Ames-Dryden AD-1</a> project and really wanted to work with me on it. More colloquially known as the oblique wing plane, the project
+was a very interesting first project for the science fair. While it was not an original idea, it could have many applications in the real world as a theoretically more efficient substitute for drones
+or even a more efficient substitute for conventional military FPVs, especially with the war in Ukraine being a hot topic.
+
+Replace the `src/app/favicon.ico` file with your own favicon.
+
+
+Replace the content in the `resources/content.js` file with your own content. You can use custom components in most cases, since the props are usually declared as `ReactNode` instead of `string`, but it's important that you need to import them in the file.
+
+## The Urgent Change of Plans
+
+Unfortunatly due to my clasmate's erratic nature, he ended up using one of his other projects that he was developing. This meant that **I only had 1 week** to come up with an idea and to execute it.
+
+---
+
+With this unfortunate news, I immediately remembered my previous preliminary research that I had done regarding air purifiers, due to my alergies, and I reaslized how expensive they all are. When I got one myself [(this one in particular)](https://www.ikea.com/us/en/p/foernuftig-air-purifier-white-50461961/) I remember laughing at how much a plastic housing with a fan could cost and I immediately knew this was a good project to pursue
+
+## Air Purifier on a Budget (Money and Time)
+
+<SmartImage
+  src="/images/PlaceHolder.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="16/9"
+  radius="l"
+/>
+
+<p align="center">insert desc. project </p>
+
+
+Balancing my workload between this project and school was hard, especially since this project was meant to be worked on over a much longer timespan than just 1 week, but I managed to do it somehow with a pretty decent result. Unfortunatly I did not have a working model due to the fact that the 
+
+## Did I Win Anything
+
+<SmartImage
+  src="/images/PlaceHolder.png"
+  sizes="640px"
+  alt="Example image"
+  aspectRatio="16/9"
+  radius="l"
+/>
+
+<p align="center">insert desc. </p>
+
+Unfortunatly no, but this was expected. Only spending a week on developing a "fully functional" model the main point to its poor performance at the science fair. However, this does not mean that all hope is lost.
+
+## What I learned
+
+I learned a lot through this event. Of course it exposed me to how fun hardware development can be and how [I²C](https://en.wikipedia.org/wiki/I%C2%B2C) even function, but, more importantly, I learned that you must chose the people that you work with wisely. My clasmate ditching me made me realise how dependent each person is for achieving a final product; chosing a weak group member will only make things harder than they need to be.
+
+---
+
+I am glad that I realised this so early on in my life as the outcome could have been far worse for me.
+
+## Outcome
+
+Even though this project was not the sucess that I hoped that it would be, I am still pretty happy with what I achieved, especially while balancing my school workload with this work intensive project. 
+
+---
+
+# Read More
+
+The GitHub for this project contains all of the source code for this project, along with more specifics for the project. [Check it out!](https://github.com/em-mw/) (soon)

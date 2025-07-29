@@ -114,7 +114,6 @@ export default function About() {
             marginBottom="32"
           >
             {about.calendar.display && (
-              <a href={about.calendar.link}>
               <Flex
                 fitWidth
                 border="brand-alpha-medium"
@@ -138,7 +137,6 @@ export default function About() {
                   icon="chevronRight"
                 />
               </Flex>
-              </a>
             )}
             <Heading align="center" variant="display-strong-xl">
               {person.name}
