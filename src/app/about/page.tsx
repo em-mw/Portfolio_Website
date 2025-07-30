@@ -9,6 +9,7 @@ import {
   SmartImage,
   Tag,
   Text,
+  TiltFx
 } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -89,7 +90,10 @@ export default function About() {
             flex={3}
             horizontal="center"
           >
-            <Avatar src={person.avatar} size="xl" />
+            
+            <TiltFx aspectRatio={1} radius="xs">
+              <Avatar src={person.avatar} size="xl" />
+            </TiltFx>
             <Flex gap="8" vertical="center">
               <Icon onBackground="accent-weak" name="globe" />
               About {person.name}
