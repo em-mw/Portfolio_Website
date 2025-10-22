@@ -40,7 +40,7 @@ const social = [
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/maximilian-werner-33a888306/",
   },
   {
     name: "X",
@@ -122,7 +122,7 @@ const about = {
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/PlaceHolder.png",
+            src: "/images/about/intern1.jpeg",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -185,7 +185,7 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/PlaceHolder.png",
+            src: "/images/about/java.png",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -193,13 +193,9 @@ const about = {
         ],
         imgDesc: [
           {
-            imgText: "Learn More",
-            imgLink: "https://github.com/ErMax-Inc/pic2ascii",
-          },
-          {
             imgText: "Main Project",
-            imgLink: "https://github.com/ErMax-Inc/"
-          }
+            imgLink: "https://github.com/em-mw/GPAezdbl"
+          },
         ],
       },
       {
@@ -208,7 +204,19 @@ const about = {
         // optional: leave the array empty if you don't want to display images
         images: [
           {
-            src: "/images/PlaceHolder.png",
+            src: "/images/about/hw1.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/about/hw2.jpeg",
+            alt: "Project image",
+            width: 16,
+            height: 9,
+          },
+          {
+            src: "/images/about/hw3.jpeg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -221,8 +229,19 @@ const about = {
           },
           {
             imgText: "Science Fair Project",
-            imgLink: "https://github.com/ErMax-Inc/"
+            imgLink: "work/AirPurifier"
           }
+        ],
+      },
+      {
+        title: "Blender",
+        description: <>A software for 3D rendering and animating</>,
+        // optional: leave the array empty if you don't want to display images
+        images: [
+        ],
+        imgDesc: [
+          {
+          },
         ],
       },
     ],

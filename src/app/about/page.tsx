@@ -94,10 +94,7 @@ export default function About() {
             <TiltFx aspectRatio={1} radius="xs">
               <Avatar src={person.avatar} size="xl" />
             </TiltFx>
-            <Flex gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
-              About {person.name}
-            </Flex>
+            Languages:
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
                 {person.languages.map((language, index) => (
