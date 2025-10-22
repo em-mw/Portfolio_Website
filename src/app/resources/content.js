@@ -241,6 +241,8 @@ const about = {
         ],
         imgDesc: [
           {
+            imgText: "Main Project",
+            imgLink: "!replace this!"
           },
         ],
       },
